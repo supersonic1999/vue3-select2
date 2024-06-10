@@ -89,6 +89,9 @@ export default {
         ...this.settings,
         data: this.options
       })
+      .on('change', () => {
+        this.$emit('update:modelValue', this.select2.val());
+      });
       .on('select2:select select2:unselect', ev => {
         this.$emit('update:modelValue', this.select2.val());
         this.$emit('select', ev['params']['data']);
